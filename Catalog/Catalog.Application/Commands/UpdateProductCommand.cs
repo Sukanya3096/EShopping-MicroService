@@ -1,10 +1,16 @@
+using Amazon.Runtime.Internal;
+using Catalog.Core.Entities;
+using MediatR;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Catalog.Core.Entities
+namespace Catalog.Application.Commands
 {
-    public class Product : BaseEntity
+    public class UpdateProductCommand : IRequest<bool>
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         [BsonElement("Name")]
         public string Name { get; set; }
         public string Summary { get; set; }
@@ -12,7 +18,6 @@ namespace Catalog.Core.Entities
         public string ImageFile { get; set; }
         public ProductBrand Brands { get; set; }
         public ProductType Types { get; set; }
-        [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
     }
 }
