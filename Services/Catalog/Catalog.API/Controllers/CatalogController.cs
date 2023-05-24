@@ -15,7 +15,7 @@ namespace Catalog.API.Controllers
     {
         private readonly IMediator _mediatr;
 
-        public CatalogController(Mediator mediatr)
+        public CatalogController(IMediator mediatr)
         {
             _mediatr = mediatr;
         }
